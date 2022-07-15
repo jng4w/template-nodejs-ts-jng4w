@@ -15,28 +15,12 @@ export class Routes {
         });
 
         app.route('/contact')
-        .get(this.contactController.getContacts);
-
-        app.route('/contact')
+        .get(this.contactController.getContacts)
         .post(this.contactController.addNewContact);
 
         app.route('/contact/:contactId')
-        .get((req: Request, res: Response) => {
-            res.status(200).send({
-                message: 'GET request successful!'
-            });
-        })
-        .put((req: Request, res: Response) => {
-        // Update a contact           
-            res.status(200).send({
-                message: 'PUT request successfulll!!!!'
-            });
-        })
-        .delete((req: Request, res: Response) => {       
-        // Delete a contact     
-            res.status(200).send({
-                message: 'DELETE request successfulll!!!!'
-            });
-        });
+        .get(this.contactController.getContactWithID)
+        .put(this.contactController.updateContact)
+        .delete(this.contactController.deleteContact);
     }
 }
